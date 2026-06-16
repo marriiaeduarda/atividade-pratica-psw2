@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bônus Matrícula</title>
+</head>
+
+<body>
+    <h1>Sistema de Cálculo de Bônus</h1>
+    <form action="/calcular" method="post">
+        <label for="nome">Nome:</label><br>
+        <input type="text" name="nome" value="<%= valores.nome %>">
+        <br><br>
+        <label for="cpf">CPF:</label><br>
+        <input type="text" name="cpf" value="<%= valores.cpf %>">
+        <br><br>
+        <label for="valor">Valor da Matrícula:</label><br>
+        <input type="number" step="0.01" name="valor" value="<%= valores.valor %>">
+        <br><br>
+        <button type="submit">Calcular</button>
+    </form>
+    <% if(retorno){ %>
+        <% if(retorno.erro){ %>
+            <h2>
+                <%= retorno.erro %>
+            </h2>
+            <% }else{ %>
+                <h2>Nome: <%= retorno.nome %>
+                </h2>
+                <h2>CPF: <%= retorno.cpf %>
+                </h2>
+                <h2>Valor da Matrícula: R$ <%= retorno.valorMatricula %>
+                </h2>
+                <h2>Percentual de Desconto: <%= retorno.percentual %>%</h2>
+                <h2>Valor do Desconto: R$ <%= retorno.valorDesconto %>
+                </h2>
+                <h2>Valor Final: R$ <%= retorno.valorFinal %>
+                </h2>
+                <% } %>
+                    <% }else{ %>
+                        <h2>Não temos retorno</h2>
+                        <% } %>
+</body>
+
+</html>
